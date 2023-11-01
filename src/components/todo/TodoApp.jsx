@@ -1,22 +1,23 @@
 import { useState } from "react"
 import {BrowserRouter, Routes, Route, useNavigate, useParams, Link} from 'react-router-dom';
+import './TodoApp.css';
 
 export default function TodoApp(){
 
     return(
         <div className="TodoApp">
-            <HeaderComponent />
             <BrowserRouter>
-                <Routes>
+                <HeaderComponent />
+                <Routes>                    
                     <Route path='/' element={<LoginComponent></LoginComponent>} />    
                     <Route path='/login' element={<LoginComponent></LoginComponent>} />    
                     <Route path='/welcome/:username' element={<WelcomeComponent></WelcomeComponent>} />                    
                     <Route path='/todos' element={<ListTodosComponent></ListTodosComponent>} />
-                    <Route path='/logout' element={<LogoutComponent></LogoutComponent>} />        
-                    <Route path='*' element={<ErrorComponent></ErrorComponent>} />        
+                    <Route path='/logout' element={<LogoutComponent/>} />        
+                    <Route path='*' element={<ErrorComponent></ErrorComponent>} />                            
                 </Routes>
-            </BrowserRouter>
-            <FooterComponent />
+                <FooterComponent />
+            </BrowserRouter>            
         </div>
     )
 }
@@ -125,10 +126,10 @@ function ListTodosComponent(){
     ]
 
     return(
-        <div className="ListTodosComponent">
+        <div className="container">
             <h1> Things You want to do ! </h1>
             <div>
-                <table>
+                <table className="table">
                     <thead>
                         <tr>
                             <td>ID</td>
@@ -159,21 +160,36 @@ function ListTodosComponent(){
 
 function HeaderComponent(){
     return(
-        <div className="header">
-            <div>
-                Header <hr/>
+        <header className="border-bottom border-light border-5 mb-5 p-2">
+            <div className="container">
+                <div className="row">
+                    <nav className="navbar navbar-expand-lg">
+                        <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="/welcome/baejimeel">baejimeel</a>
+                        <div className="collapse navbar-collapse">
+                            <ul className="navbar-nav">
+                                <li className="nav-item fs-5"><Link className="nav-link" to="/welcome/baejimeel">Home</Link></li>
+                                <li className="nav-item fs-5"><Link className="nav-link" to="/todos">Todos</Link></li>
+                            </ul>
+                        </div>
+                        <ul className="navbar-nav">
+                            <li className="nav-item fs-5"><Link className="nav-link" to="/login">Login</Link></li>
+                            <li className="nav-item fs-5"><Link className="nav-link" to="/logout">Logout</Link></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
+        </header>
+
     )
 }
 
 function FooterComponent(){
     return(
-        <div className="footer">
-            <div>
-            <hr/> Footer 
+        <footer className="footer">
+            <div className="container">
+                Footer 
             </div>
-        </div>
+        </footer>
     )
 }
 
