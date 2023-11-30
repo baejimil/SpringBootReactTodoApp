@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
-import { AuthContext, useAuth } from "./security/AuthContext";
+import { useAuth } from "./security/AuthContext";
 
 export default function LoginComponent(){
 
@@ -18,8 +18,8 @@ export default function LoginComponent(){
        setPassword(event.target.value);
    }
 
-    function handleSubmit(){
-       if(authContext.login(username, password)){        
+    async function handleSubmit(){
+       if(await authContext.login(username, password)){        
         navigate(`/welcome/${username}`);
        }else{
         setShowErrorMessage(true);

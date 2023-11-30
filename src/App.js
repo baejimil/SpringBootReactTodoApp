@@ -9,9 +9,9 @@ function App() {
   );
 }
 
-function PlayWithProps({property1,property2}){
-  console.log(property1);
-  console.log(property2);
-}
+// function PlayWithProps({property1,property2}){
+//   console.log(property1);
+//   console.log(property2);
+// }
 
 export default App;
